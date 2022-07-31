@@ -20,7 +20,15 @@ class Line
     /**
      * @var array|null
      */
+    private ?array $textsInitial;
+    /**
+     * @var array|null
+     */
     private ?array $styles;
+    /**
+     * @var array|null
+     */
+    private ?array $stylesInitial;
     /**
      * @var string
      */
@@ -72,7 +80,10 @@ class Line
         ];
 
         $this->mask = "";
+        $this->textsInitial = null;
         $this->texts = null;
+        $this->stylesInitial = null;
+        $this->styles = null;
         $this->columnsSize = null;
         $this->separator = "|";
         $this->paddingCharacter = ".";
@@ -127,14 +138,45 @@ class Line
      */
     public function text(?string $text, ?array $styles = []): Line
     {
+        $this->texts[] = $this->textEnconding($text);
+        $this->styles[] = $this->getStyleCodes($styles);
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $text
+     * @param array|null $styles
+     * @return Line
+     */
+    public function textInitial(?string $text, ?array $styles = []): Line
+    {
+        $this->textsInitial[] = $this->textEnconding($text);
+        $this->stylesInitial[] = $this->getStyleCodes($styles);
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $text
+     * @return false|string
+     */
+    private function textEnconding(?string $text)
+    {
+        return iconv('UTF-8', 'ascii//TRANSLIT', $text);
+    }
+
+    /**
+     * @param array|null $styles
+     * @return string
+     */
+    private function getStyleCodes(?array $styles = []): string
+    {
         $formatMap = array_map(function ($v) {
             return $this->codes[$v];
         }, $styles);
 
-        $this->texts[] = iconv('UTF-8', 'ascii//TRANSLIT', $text);
-        $this->styles[] = implode(';', $formatMap);
-
-        return $this;
+        return implode(';', $formatMap);
     }
 
     /**
@@ -152,6 +194,8 @@ class Line
      */
     public function print(): void
     {
+        $this->textsInitial();
+
         if ($this->columnsSize === null) {
             $this->texts();
         } else {
@@ -177,7 +221,13 @@ class Line
         $i = 0;
         foreach ($this->texts as $key => $text) {
             $i++;
-            $this->mask .= "\e[{$this->styles[$key]}m";
+
+            $codes = $this->styles[$key] ?? null;
+            if ($codes === null) {
+                continue;
+            }
+
+            $this->mask .= "\e[{$codes}m";
             $this->mask .= "%s";
             $this->mask .= "\e[0m";
             $this->mask .= $count === $i ? "" : " {$this->separator} ";
@@ -194,11 +244,30 @@ class Line
         $i = 0;
         foreach ($this->columnsSize as $key => $size) {
             $i++;
-            $this->mask .= "\e[{$this->styles[$key]}m";
+
+            $codes = $this->styles[$key] ?? null;
+            if ($codes === null) {
+                continue;
+            }
+
+            $this->mask .= "\e[{$codes}m";
             $this->mask .= "%-'{$this->paddingCharacter}{$size}s";
             $this->mask .= "\e[0m";
             $this->mask .= $count === $i ? "" : " {$this->separator} ";
         }
+    }
+
+    /**
+     * @return void
+     */
+    private function textsInitial(): void
+    {
+        if ($this->textsInitial === null) {
+            return;
+        }
+
+        $this->texts = array_merge($this->textsInitial, $this->texts);
+        $this->styles = array_merge($this->stylesInitial, $this->styles);
     }
 
     /**
