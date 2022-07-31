@@ -1,12 +1,11 @@
 # Console Pretty Print
 
-[![Source Code](http://img.shields.io/badge/source-curruwilla/console-pretty-log-blue.svg?style=flat-square)](https://github.com/curruwilla/console-pretty-log)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/curruwilla/console-pretty-log.svg?style=flat-square)](https://packagist.org/packages/curruwilla/console-pretty-log)
 [![Latest Version](https://img.shields.io/github/release/curruwilla/console-pretty-log.svg?style=flat-square)](https://github.com/curruwilla/console-pretty-log/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build](https://img.shields.io/scrutinizer/build/g/curruwilla/console-pretty-log.svg?style=flat-square)](https://scrutinizer-ci.com/g/curruwilla/console-pretty-log)
 [![Quality Score](https://img.shields.io/scrutinizer/g/curruwilla/console-pretty-log.svg?style=flat-square)](https://scrutinizer-ci.com/g/curruwilla/console-pretty-log)
-[![Total Downloads](https://img.shields.io/packagist/dt/curruwilla/console-pretty-log.svg?style=flat-square)](https://packagist.org/packages/ccurruwilla/console-pretty-log)
+[![Total Downloads](https://img.shields.io/packagist/dt/curruwilla/console-pretty-log.svg?style=flat-square)](https://packagist.org/packages/curruwilla/console-pretty-log)
 
 Simple and customizable console log output for CLI apps.
 
