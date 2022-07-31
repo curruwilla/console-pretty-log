@@ -1,0 +1,20 @@
+{
+  "name": "curruwilla/console-pretty-log",
+  "description": "Simple and customizable console log output for CLI apps.",
+  "keywords": ["console", "cli", "log", "pretty"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "William Alvares",
+      "email": "curruwilla@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "ConsolePrettyLog\\": "src"
+    }
+  }
+}
