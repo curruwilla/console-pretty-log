@@ -6,7 +6,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build](https://img.shields.io/scrutinizer/build/g/curruwilla/console-pretty-log.svg?style=flat-square)](https://scrutinizer-ci.com/g/curruwilla/console-pretty-log)
 [![Quality Score](https://img.shields.io/scrutinizer/g/curruwilla/console-pretty-log.svg?style=flat-square)](https://scrutinizer-ci.com/g/curruwilla/console-pretty-log)
-[![Total Downloads](https://img.shields.io/packagist/dt/curruwilla/console-pretty-log.svg?style=flat-square)](https://packagist.org/packages/ccurruwilla/console-pretty-log)
+[![Total Downloads](https://img.shields.io/packagist/dt/curruwilla/console-pretty-log.svg?style=flat-square)](https://packagist.org/packages/curruwilla/console-pretty-log)
 
 Simple and customizable console log output for CLI apps.
 
