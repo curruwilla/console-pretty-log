@@ -33,14 +33,23 @@ composer require curruwilla/console-pretty-log
 
 Check the example file.
 
+If you are defining the size of columns, when using **textInitial** be sure to enter the size as well.
+
 **Example:**
 ```php
+use ConsolePrettyLog\Background;
+use ConsolePrettyLog\Color;
+use ConsolePrettyLog\Font;
+use ConsolePrettyLog\Line;
+
 $line = new Line();
 $line->columnsSize([15, 75, 10]); // <-- Use to keep information aligned
 //$line->separator('-'); <-- Default value: '|'
 //$line->paddingCharacter(' '); <-- Default value: '.'
 //$line->enableDate(false); <-- Default value: true
 //$line->dateFormat("d/m/Y H:i"); <-- Default value: 'Y-m-d H:i:s'
+//$line->textInitial('LOG', [Color::RED, Font::BOLD]); <-- Include text at the beginning of every line
+//$line->textInitial('IMPORTANT', [Font::BOLD]); <-- Include text at the beginning of every line
 
 $line
     ->text('Account 1', [Font::BOLD, Font::ITALIC])

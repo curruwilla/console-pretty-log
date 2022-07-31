@@ -5,14 +5,19 @@ use ConsolePrettyLog\Color;
 use ConsolePrettyLog\Font;
 use ConsolePrettyLog\Line;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../src/Background.php';
+require __DIR__ . '/../src/Color.php';
+require __DIR__ . '/../src/Font.php';
+require __DIR__ . '/../src/Line.php';
 
 $line = new Line();
-$line->columnsSize([15, 75, 10]);
+$line->columnsSize([null, null, 15, 75, null]);
 //$line->separator('|');
 //$line->paddingCharacter('.');
 //$line->enableDate(false);
 //$line->dateFormat("d/m/Y H:i");
+$line->textInitial('LOG', [Color::RED, Font::BOLD]);
+$line->textInitial('IMPORTANT', [Font::BOLD]);
 
 $line
     ->text('Account 1', [Font::BOLD, Font::ITALIC])
@@ -27,7 +32,7 @@ $line
     ->print();
 
 $line
-    ->text('Account 3', [Font::BOLD])
+    ->text('Account 35', [Font::BOLD])
     ->text('Payment made successfully', [Color::WHITE, Font::ITALIC])
     ->text('SUCCESS', [Background::GREEN])
     ->print();
