@@ -203,7 +203,7 @@ class Line
         }
 
         if ($this->enableDate === true) {
-            echo sprintf("\e[34m[%s] \e[0m", date($this->dateFormat));
+            echo sprintf("\033[34m[%s] \033[0m", date($this->dateFormat));
         }
 
         echo vsprintf($this->mask . "\n", $this->texts);
@@ -227,9 +227,9 @@ class Line
                 continue;
             }
 
-            $this->mask .= "\e[{$codes}m";
+            $this->mask .= "\033[{$codes}m";
             $this->mask .= "%s";
-            $this->mask .= "\e[0m";
+            $this->mask .= "\033[0m";
             $this->mask .= $count === $i ? "" : " {$this->separator} ";
         }
     }
@@ -250,9 +250,9 @@ class Line
                 continue;
             }
 
-            $this->mask .= "\e[{$codes}m";
+            $this->mask .= "\033[{$codes}m";
             $this->mask .= "%-'{$this->paddingCharacter}{$size}s";
-            $this->mask .= "\e[0m";
+            $this->mask .= "\033[0m";
             $this->mask .= $count === $i ? "" : " {$this->separator} ";
         }
     }
