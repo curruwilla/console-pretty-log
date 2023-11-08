@@ -194,6 +194,10 @@ class Line
      */
     public function print(): void
     {
+        if (php_sapi_name() !== 'cli') {
+            return;
+        }
+
         $this->textsInitial();
 
         if ($this->columnsSize === null) {
